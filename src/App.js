@@ -24,6 +24,19 @@ function App() {
     setCurrent((current + 1) % words.length);
   };
 
+    // Load from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem("flashcards");
+    if (saved) setFlashcards(JSON.parse(saved));
+  }, []);
+  
+    // Save to localStorage
+  useEffect(() => {
+    localStorage.setItem("flashcards", JSON.stringify(flashcards));
+  }, [flashcards]);
+
+  
+
   const handleUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
