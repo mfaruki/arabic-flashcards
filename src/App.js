@@ -1,5 +1,6 @@
 // src/App.js
 import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 
 const sampleWords = [
@@ -14,6 +15,7 @@ function App() {
   const [flipped, setFlipped] = useState(false);
   const [newArabic, setNewArabic] = useState('');
   const [newEnglish, setNewEnglish] = useState('');
+  const [flashcards, setFlashcards] = useState([]);
 
   const handleFlip = () => {
     setFlipped(!flipped);
@@ -35,7 +37,7 @@ function App() {
     localStorage.setItem("flashcards", JSON.stringify(flashcards));
   }, [flashcards]);
 
-  
+
 
   const handleUpload = (e) => {
     const file = e.target.files[0];
